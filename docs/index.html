@@ -1,91 +1,208 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Hunter Card Generator</title>
     <meta name="author" content="Nathaniel Wu" />
     <meta name="Resource-type" content="Document" />
-</head>
+  </head>
 
-<body>
-    <div align="center">
-        <div>
-            <a id="download_button" href="#" class="button">
-                <canvas id="canvas" width="760" height="993"></canvas>
-            </a>
+  <body>
+    <div class="container">
+      <div>
+        <a id="download_button" href="#" class="button">
+          <canvas id="canvas" width="760" height="993"></canvas>
+        </a>
+      </div>
+      <div class="form-container">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <div class="col-4">
+              <label class="form-label">模版</label>
+            </div>
+            <div class="col-8">
+              <label class="form-radio">
+                <input class="template-radio" type="radio" name="template" value="1" checked>
+                <i class="form-icon"></i> 1
+              </label>
+              <label class="form-radio">
+                <input class="template-radio" type="radio" name="template" value="2">
+                <i class="form-icon"></i> 2
+              </label>
+              <label class="form-radio">
+                <input class="template-radio" type="radio" name="template" value="3">
+                <i class="form-icon"></i> 3
+              </label>
+              <label class="form-radio">
+                <input class="template-radio" type="radio" name="template" value="4">
+                <i class="form-icon"></i> 4
+              </label>
+              <label class="form-radio">
+                <input class="template-radio" type="radio" name="template" value="5">
+                <i class="form-icon"></i> 5
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-4">
+              <label class="form-label">名字</label>
+            </div>
+            <div class="col-8">
+              <input class="form-input" type="text" id="name">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-4">
+              <label class="form-label">性别</label>
+            </div>
+            <div class="col-8">
+              <input class="form-input" type="text" id="gender">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-4">
+              <label class="form-label">使用武器</label>
+            </div>
+            <div class="col-8">
+              <label class="form-checkbox">
+                <input type="checkbox" id="weapon_0" value="great_sword">
+                <i class="form-icon"></i> 大剑
+              </label>
+              <label class="form-checkbox">
+                <input type="checkbox" id="weapon_1" value="sword_shield">
+                <i class="form-icon"></i> 片手剑
+              </label>
+              <label class="form-checkbox">
+                <input type="checkbox" id="weapon_2" value="dual_blade">
+                <i class="form-icon"></i> 双剑
+              </label>
+              <label class="form-checkbox">
+                <input type="checkbox" id="weapon_3" value="long_sword">
+                <i class="form-icon"></i> 太刀
+              </label>
+              <label class="form-checkbox">
+                <input type="checkbox" id="weapon_4" value="hammer">
+                <i class="form-icon"></i> 大锤
+              </label>
+              <label class="form-checkbox">
+                <input type="checkbox" id="weapon_5" value="hunting_horn">
+                <i class="form-icon"></i> 狩猎笛
+              </label>
+              <label class="form-checkbox">
+                <input type="checkbox" id="weapon_6" value="lance">
+                <i class="form-icon"></i> 长枪
+              </label>
+              <label class="form-checkbox">
+                <input type="checkbox" id="weapon_7" value="gunlance">
+                <i class="form-icon"></i> 铳枪
+              </label>
+              <label class="form-checkbox">
+                <input type="checkbox" id="weapon_8" value="switch_axe">
+                <i class="form-icon"></i> 斩斧
+              </label>
+              <label class="form-checkbox">
+                <input type="checkbox" id="weapon_9" value="charge_blade">
+                <i class="form-icon"></i> 盾斧
+              </label>
+              <label class="form-checkbox">
+                <input type="checkbox" id="weapon_10" value="insect_glaive">
+                <i class="form-icon"></i> 操虫棍
+              </label>
+              <label class="form-checkbox">
+                <input type="checkbox" id="weapon_11" value="bow">
+                <i class="form-icon"></i> 弓
+              </label>
+              <label class="form-checkbox">
+                <input type="checkbox" id="weapon_12" value="light_bowgan">
+                <i class="form-icon"></i> 轻弩
+              </label>
+              <label class="form-checkbox">
+                <input type="checkbox" id="weapon_13" value="heavy_bowgan">
+                <i class="form-icon"></i> 重弩
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-4">
+              <label class="form-label">工作日游玩时间</label>
+            </div>
+            <div class="col-8">
+              <input class="form-input" type="text" id="play_time_weekday">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-4">
+              <label class="form-label">周末游玩时间</label>
+            </div>
+            <div class="col-8">
+              <input class="form-input" type="text" id="play_time_weekend">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-4">
+              <label class="form-label">游玩风格</label>
+            </div>
+            <div class="col-8">
+              <input class="form-input" type="text" id="play_style">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-4">
+              <label class="form-label">评论</label>
+            </div>
+            <div class="col-8">
+              <textarea class="form-input" rows="3" id="comment"></textarea>
+            </div>
+          </div>
+        </form>
+        <div class="col-4 col-mx-auto">
+          <button class="btn btn-primary input-group-btn" onclick="submit()">提交</button>
         </div>
-        <div>
-            模版
-            <input type="radio" name="template" value="1" checked> 1
-            <input type="radio" name="template" value="2"> 2
-            <input type="radio" name="template" value="3"> 3
-            <input type="radio" name="template" value="4"> 4
-            <input type="radio" name="template" value="5"> 5
-            <br> 名字：
-            <input type="text" id="name" value=""> 性别：
-            <input type="text" id="gender" value="">
-            <br/>
-            <input type="checkbox" id="weapon_0" value="great_sword"> 大剑
-            <input type="checkbox" id="weapon_1" value="sword_shield"> 片手剑
-            <input type="checkbox" id="weapon_2" value="dual_blade"> 双剑
-            <input type="checkbox" id="weapon_3" value="long_sword"> 太刀
-            <input type="checkbox" id="weapon_4" value="hammer"> 大锤
-            <input type="checkbox" id="weapon_5" value="hunting_horn"> 狩猎笛
-            <input type="checkbox" id="weapon_6" value="lance"> 长枪
-            <br/>
-            <input type="checkbox" id="weapon_7" value="gunlance"> 铳枪
-            <input type="checkbox" id="weapon_8" value="switch_axe"> 斩斧
-            <input type="checkbox" id="weapon_9" value="charge_blade"> 盾斧
-            <input type="checkbox" id="weapon_10" value="insect_glaive"> 操虫棍
-            <input type="checkbox" id="weapon_11" value="bow"> 弓
-            <input type="checkbox" id="weapon_12" value="light_bowgan"> 轻弩
-            <input type="checkbox" id="weapon_13" value="heavy_bowgan"> 重弩
-            <br/> 工作日游玩时间：
-            <input type="text" id="play_time_weekday" value="">
-            <br/> 周末游玩时间：
-            <input type="text" id="play_time_weekend" value="">
-            <br/> 游玩风格：
-            <input type="text" id="play_style" value="">
-            <br/> 评论：
-            <br/>
-            <textarea id="comment" rows="4" cols="50"></textarea>
-            <br/>
-            <button onclick="submit()">提交</button>
-        </div>
+      </div>
     </div>
     </div>
     <script src="script.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <script type="text/javascript">
-        var index = null;
-        var name = null;
-        var gender = null;
-        var weapon_list = new Array(14).fill(false);
-        var play_time_weekday = null;
-        var play_time_weekend = null;
-        var play_style = null;
-        var comment = null;
-        init();
-        draw_card_template(1);
-        function submit() {
-            var radios = document.getElementsByName("template");
-            for (var i = 0; i < radios.length; i++) {
-                if (radios[i].checked) {
-                    index = parseInt(radios[i].value);
-                    break;
-                }
-            }
-            name = document.getElementById("name").value;
-            gender = document.getElementById("gender").value;
-            for (var i = 0; i < 14; i++)
-                weapon_list[i] = document.getElementById("weapon_" + i).checked;
-            play_time_weekday = document.getElementById("play_time_weekday").value;
-            play_time_weekend = document.getElementById("play_time_weekend").value;
-            play_style = document.getElementById("play_style").value;
-            comment = document.getElementById("comment").value;
-            print_info(index, name, gender, weapon_list, play_time_weekday, play_time_weekend, play_style, comment);
+      var index = null;
+      var name = null;
+      var gender = null;
+      var weapon_list = new Array(14).fill(false);
+      var play_time_weekday = null;
+      var play_time_weekend = null;
+      var play_style = null;
+      var comment = null;
+      init();
+      draw_card_template(1);
+
+      function submit() {
+        var radios = document.getElementsByName("template");
+        for (var i = 0; i < radios.length; i++) {
+          if (radios[i].checked) {
+            index = parseInt(radios[i].value);
+            break;
+          }
         }
+        name = document.getElementById("name").value;
+        gender = document.getElementById("gender").value;
+        for (var i = 0; i < 14; i++)
+          weapon_list[i] = document.getElementById("weapon_" + i).checked;
+        play_time_weekday = document.getElementById("play_time_weekday").value;
+        play_time_weekend = document.getElementById("play_time_weekend").value;
+        play_style = document.getElementById("play_style").value;
+        comment = document.getElementById("comment").value;
+        print_info(index, name, gender, weapon_list, play_time_weekday, play_time_weekend, play_style, comment);
+      }
+
+      document.querySelectorAll('input.template-radio').forEach(function(el) {
+        el.addEventListener('change', function(event) {
+          submit()
+        })
+      })
+
     </script>
-</body>
+  </body>
 
 </html>
