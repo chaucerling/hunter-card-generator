@@ -26,46 +26,18 @@ function draw_card_template(index) {
     context.clearRect(0, 0, canvas.width, canvas.height);
     load_card_template(index, function () { context.drawImage(card_template, 0, 0, 760, 993); card_template_drawn = true; });
 }
-function wait(trial, expected_value, check_interval, callback) {
-    while (trial() !== expected_value) {
-        setTimeout(function () { wait(trial, expected_value, check_interval, callback); }, check_interval);
-        return;
-    } callback();
-}
-
-function printAtWordWrap(context, text, x, y, lineHeight, fitWidth) {
-    fitWidth = fitWidth || 0;
-    if (fitWidth <= 0) {
-        context.fillText(text, x, y);
-        return;
-    }
-    var words = text.split(' ');
-    var currentLine = 0;
-    var idx = 1;
-    while (words.length > 0 && idx <= words.length) {
-        var str = words.slice(0, idx).join(' ');
-        var w = context.measureText(str).width;
-        if (w > fitWidth) {
-            if (idx == 1) {
-                idx = 2;
-            }
-            context.fillText(words.slice(0, idx - 1).join(' '), x, y + (lineHeight * currentLine));
-            currentLine++;
-            words = words.splice(idx - 1);
-            idx = 1;
-        }
-        else { idx++; }
-    }
-    if (idx > 0)
-        context.fillText(words.join(' '), x, y + (lineHeight * currentLine));
-}
-
 function print_info(index, name, gender, weapon_list, play_time_weekday, play_time_weekend, play_style, comment) {
     if (index != card_template_index)
         draw_card_template(index);
     else {
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.drawImage(card_template, 0, 0, 760, 993);
+    }
+    function wait(trial, expected_value, check_interval, callback) {
+        while (trial() !== expected_value) {
+            setTimeout(function () { wait(trial, expected_value, check_interval, callback); }, check_interval);
+            return;
+        } callback();
     }
     wait(function () { return card_template_drawn; }, true, 100, function () {
         context.beginPath();
