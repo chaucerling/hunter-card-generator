@@ -69,7 +69,7 @@ function print_info(index, name, gender, weapon_list, play_time_weekday, play_ti
     }
     wait(function () { return card_template_drawn; }, true, 100, function () {
         context.beginPath();
-        context.font = "40px Helvetica";
+        context.font = "40px sans-serif";
         context.fillStyle = 'black';
         context.textAlign = 'center';
         context.textBaseline = 'middle';
@@ -82,7 +82,7 @@ function print_info(index, name, gender, weapon_list, play_time_weekday, play_ti
             if (comment.length / 13 > 4)
                 context.fillText("请不要超过52个中文字符。", 292, 852, 550);
             else {
-                const upper = 790, lower = 970, line_h = 38;
+                const upper = 790, lower = 970, line_h = 40;
                 var line = Math.ceil(comment.length / 13);
                 var margin = ((lower - upper) - line * line_h) / (line + 1);
                 for (var i = 0; i < line; i++)
