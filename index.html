@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Hunter Card Generator</title>
+    <meta name="author" content="Nathaniel Wu" />
+    <meta name="Resource-type" content="Document" />
+</head>
+
+<body>
+    <div align="center">
+        <div>
+            <a id="download_button" href="#" class="button">
+                <canvas id="canvas" width="760" height="993"></canvas>
+            </a>
+        </div>
+        <div>
+            模版
+            <input type="radio" name="template" value="1"> 1
+            <input type="radio" name="template" value="2"> 2
+            <input type="radio" name="template" value="3"> 3
+            <input type="radio" name="template" value="4"> 4
+            <input type="radio" name="template" value="5"> 5
+            <br> 名字：
+            <input type="text" id="name" value=""> 性别：
+            <input type="text" id="gender" value="">
+            <br/>
+            <input type="checkbox" id="weapon_0" value="great_sword"> 大剑
+            <input type="checkbox" id="weapon_1" value="sword_shield"> 片手剑
+            <input type="checkbox" id="weapon_2" value="dual_blade"> 双剑
+            <input type="checkbox" id="weapon_3" value="long_sword"> 太刀
+            <input type="checkbox" id="weapon_4" value="hammer"> 大锤
+            <input type="checkbox" id="weapon_5" value="hunting_horn"> 狩猎笛
+            <input type="checkbox" id="weapon_6" value="lance"> 长枪
+            <br/>
+            <input type="checkbox" id="weapon_7" value="gunlance"> 铳枪
+            <input type="checkbox" id="weapon_8" value="switch_axe"> 斩斧
+            <input type="checkbox" id="weapon_9" value="charge_blade"> 盾斧
+            <input type="checkbox" id="weapon_10" value="insect_glaive"> 操虫棍
+            <input type="checkbox" id="weapon_11" value="bow"> 弓
+            <input type="checkbox" id="weapon_12" value="light_bowgan"> 轻弩
+            <input type="checkbox" id="weapon_13" value="heavy_bowgan"> 重弩
+            <br/> 工作日日游玩时间：
+            <input type="text" id="play_time_weekday" value="">
+            <br/> 周末游玩时间：
+            <input type="text" id="play_time_weekend" value="">
+            <br/> 游玩风格：
+            <input type="text" id="play_style" value="">
+            <br/> 补充说明：
+            <br/>
+            <textarea id="comment" rows="4" cols="50"></textarea>
+            <br/>
+            <button onclick="submit()">提交</button>
+        </div>
+    </div>
+    </div>
+    <script src="script.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var index = null;
+        var name = null;
+        var gender = null;
+        var weapon_list = new Array(14).fill(false);
+        var play_time_weekday = null;
+        var play_time_weekend = null;
+        var play_style = null;
+        var comment = null;
+        init();
+        draw_card_template(1);
+        function submit() {
+            var radios = document.getElementsByName("template");
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    index = parseInt(radios[i].value);
+                    break;
+                }
+            }
+            name = document.getElementById("name").value;
+            gender = document.getElementById("gender").value;
+            for (var i = 0; i < 14; i++)
+                weapon_list[i] = document.getElementById("weapon_" + i).checked;
+            play_time_weekday = document.getElementById("play_time_weekday").value;
+            play_time_weekend = document.getElementById("play_time_weekend").value;
+            play_style = document.getElementById("play_style").value;
+            comment = document.getElementById("comment").value;
+            print_info(index, name, gender, weapon_list, play_time_weekday, play_time_weekend, play_style, comment);
+        }
+    </script>
+</body>
+
+</html>
